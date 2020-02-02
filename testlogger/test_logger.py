@@ -27,7 +27,6 @@ with open(infile) as f:
             entry_list_object = (entry_request_ID, entry_service_name, entry_date)
             entry_list.append(entry_list_object)
 
-
         if "exit with" in line:
             match_date = re.search(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2},\d{3}', line)
             date = datetime.datetime.strptime(match_date.group(), '%Y-%m-%dT%H:%M:%S,%f')
@@ -40,7 +39,8 @@ with open(infile) as f:
             exit_date = string_date
             exit_list_object = (exit_request_ID, exit_service_name, exit_date)
             exit_list.append(exit_list_object)
-
+#instead of this list , need to use Hashmap ,for python so can add same in and out event for same request id.
+#current implementation takes much time to provide results.
 
 if len(entry_list) == len(set(entry_list)):
     print("NO duplicate ENTRY logs ")
